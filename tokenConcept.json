@@ -1,0 +1,32 @@
+{
+  "NFT base metadata": {
+    "name": "EQUIPMENT",
+    "description": "EQ",
+    "image": {
+      "size": {
+        "height": 512,
+        "width": 512
+      },
+      "background": {
+        "zindex": 1
+      },
+      "upper": {
+        "zindex": 2
+      },
+      "body": {
+        "zindex": 3
+      },
+      "leg": {
+        "zindex": 4
+      }
+    }
+  },
+  "metadata": {
+    "image": {
+      "background": [],
+      "upper": [],
+      "body": [],
+      "leg": []
+    }
+  }
+}
