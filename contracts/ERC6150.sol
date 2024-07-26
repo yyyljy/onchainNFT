@@ -1,29 +1,37 @@
 // SPDX-License-Identifier: CC0-1.0
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "./interfaces/IERC6150.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./Utility.sol";
 
-abstract contract ERC6150 is ERC721, IERC6150, Utility {
+abstract contract ERC6150 is ERC721, ERC721Enumerable, IERC6150, Utility {
     mapping(uint256 => uint256) private _parentOf;
     mapping(uint256 => uint256[]) private _childrenOf;
     mapping(uint256 => uint256) private _indexInChildrenArray;
-
     constructor(
         string memory name_,
         string memory symbol_
     ) ERC721(name_, symbol_) {}
-
+    
     /**
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(
         bytes4 interfaceId
-    ) public view virtual override(ERC721) returns (bool) {
+    ) public view virtual override(ERC721,ERC721Enumerable) returns (bool) {
         return
             interfaceId == type(IERC6150).interfaceId ||
             super.supportsInterface(interfaceId);
+    }
+
+    function _increaseBalance(address account, uint128 value) internal virtual override(ERC721,ERC721Enumerable) {
+        super._increaseBalance(account, value);
+    }
+
+    function _update(address to, uint256 tokenId, address auth) internal virtual override(ERC721,ERC721Enumerable) returns (address) {
+        return super._update(to, tokenId, auth);
     }
 
     function parentOf(

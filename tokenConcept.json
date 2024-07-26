@@ -8,16 +8,24 @@
         "width": 512
       },
       "background": {
-        "zindex": 1
+        "zindex": 1,
+        "x":0,
+        "y":0
       },
       "upper": {
-        "zindex": 2
+        "zindex": 2,
+        "x":250,
+        "y":10
       },
       "body": {
-        "zindex": 3
+        "zindex": 3,
+        "x":200,
+        "y":200
       },
       "leg": {
-        "zindex": 4
+        "zindex": 4,
+        "x":240,
+        "y":300
       }
     }
   },
