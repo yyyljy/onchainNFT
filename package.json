@@ -1,7 +1,7 @@
 {
-  "name": "adv_web3",
+  "name": "web3",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
     "start": "nodemon ./bin/www",
     "local": "export NODE_ENV=dev && nodemon ./bin/www",
