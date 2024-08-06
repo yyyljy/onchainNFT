@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dhnController = require(`../controller/dnft-controller`);
+const accountsController = require(`../controller/accounts-controller`);
 
 const { query, body, param, oneOf, validatorErrorChecker, oneValueExists } = require(`../middlewares/validator`);
 const { checkAuthorization } = require(`../middlewares/authorize`);
@@ -9,7 +9,7 @@ const { checkAuthorization } = require(`../middlewares/authorize`);
 router.post('/mint',
   validatorErrorChecker,
   checkAuthorization,
-  dhnController.mint
+  accountsController.mint
 );
 
 

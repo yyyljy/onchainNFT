@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routers
 app.use('/', require('./routes/auth'));
-app.use('/dnft', require('./routes/dnft'));
+app.use('/accounts', require('./routes/accounts'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

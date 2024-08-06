@@ -1,14 +1,11 @@
 const jwt = require(`../middlewares/jwt`);
-const { keccak256, HDNodeWallet } = require("ethers");
 const crypto = require("crypto");
-const { UserWallet } = require("../modules/web3-modules/wallets");
+const { generateUserWallet } = require("../modules/web3-modules/wallets");
 
 async function login(req) {
   try {
-    const encodedSeed = new TextEncoder().encode(req.body.email);
-    const userWallet = new UserWallet();
-    let evmAddress = userWallet.generateFromSeed(req.body.email);
-
+    const userWallet = generateUserWallet(req.body.email);
+    let evmAddress = userWallet.address;
     let createId = crypto.randomBytes(16).toString('hex');
 
     let createJwt = {

@@ -11,16 +11,12 @@ class OperatorWallet extends ethers.Wallet {
     }
 }
 
-class UserWallet extends ethers.HDNodeWallet {
-    generateFromSeed(seedString) {
-        const encodedSeed = new TextEncoder().encode(seedString);
-        const seed = keccak256(keccak256(encodedSeed));
-        const wallet = super.fromSeed(seed);
-        console.log(`Wallet Created[${seed}][${wallet.address}]`);
-        return wallet.address;
-    }
+const generateUserWallet = (seedString) => {
+    const encodedSeed = new TextEncoder().encode(seedString);
+    const seed = keccak256(keccak256(encodedSeed));
+    return ethers.HDNodeWallet.fromSeed(seed);
 }
 
 module.exports={
-OperatorWallet,UserWallet
+OperatorWallet,generateUserWallet
 }
